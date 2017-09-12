@@ -6,7 +6,7 @@ import uk.ac.stfc.facilities.mailing.api.exceptions.MailingListClientException;
 import java.util.Set;
 
 /**
- * An client for mailing lists service with the following functionality:
+ * A client for mailing lists service with the following functionality:
  * <ul>
  * <li>retrieving lists &amp; list members</li>
  * <li>managing members&apos; subscriptions to lists</li>
