@@ -22,7 +22,7 @@ public class MailchimpWebhookController {
      * required for Mailchimp to accept a webhook client.
      */
     @GetMapping
-    @ResponseBody
+    @ResponseStatus(value = HttpStatus.OK)
     public void handshake() {
     }
 
