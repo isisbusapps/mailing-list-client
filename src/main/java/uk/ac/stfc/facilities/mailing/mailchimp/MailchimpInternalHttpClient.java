@@ -31,7 +31,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
- *
+ * An internal client that handles the requests to Mailchimp, dealing
+ * with the conversion to and from the requests and responses from
+ * the DTOs.
  */
 class MailchimpInternalHttpClient {
 
@@ -44,7 +46,13 @@ class MailchimpInternalHttpClient {
 
     private static final Logger LOG = LogManager.getLogger();
 
-    public static MailchimpInternalHttpClient getInstance(MailchimpClientConfiguration configuration) {
+    /**
+     * Used to create an instance of the internal client.
+     *
+     * @param configuration the configuration for the Mailchimp client.
+     * @return a new instance of the internal HTTP client
+     */
+    static MailchimpInternalHttpClient getInstance(MailchimpClientConfiguration configuration) {
 
         CredentialsProvider provider = new BasicCredentialsProvider();
         Credentials credentials = new UsernamePasswordCredentials(
@@ -75,6 +83,10 @@ class MailchimpInternalHttpClient {
 
     private final MailchimpClientConfiguration configuration;
 
+    /**
+     * This should only be used within the internal client.
+     */
+    @Deprecated
     MailchimpInternalHttpClient(
             MailchimpClientConfiguration configuration,
             CloseableHttpClient client,
@@ -84,19 +96,41 @@ class MailchimpInternalHttpClient {
         this.context = context;
     }
 
-    <T> T delete(String uri, Class<T> responseClass) throws MailingListClientException {
-        HttpDelete request = new HttpDelete(withBaseUrl(uri));
+    /**
+     * Completes a get request for a resource, converts the response to
+     * the given type.
+     *
+     * @param uri           the location of the resource that the
+     *                      request will get from. This is relative to
+     *                      the base URL for Mailchimp.
+     * @param responseClass the class of the response.
+     * @param <T>           the type of the response, taken from the
+     *                      given class.
+     * @return the response object
+     * @throws MailingListClientException if the resource is unavailable
+     */
+    <T> T get(String uri, Class<T> responseClass) throws MailingListClientException {
+        HttpGet request = new HttpGet(withBaseUrl(uri));
 
         return doRequest(request, responseClass);
     }
 
-    <T> T put(String uri, Object body, Class<T> responseClass) throws MailingListClientException {
-        HttpPut request = new HttpPut(withBaseUrl(uri));
-        request.setEntity(createEntity(body));
-
-        return doRequest(request, responseClass);
-    }
-
+    /**
+     * Completes a post request for a resource, converts the given
+     * request body to JSON and the response to the given type.
+     *
+     * @param uri           the location of the resource that the
+     *                      request will post to. This is relative to
+     *                      the base URL for Mailchimp.
+     * @param body          the object for the body, which will be
+     *                      converted to JSON.
+     * @param responseClass the class of the response.
+     * @param <T>           the type of the response, taken from the
+     *                      given class.
+     * @return the response body converted from JSON to the correct
+     * type.
+     * @throws MailingListClientException if the resource is unavailable.
+     */
     <T> T post(String uri, Object body, Class<T> responseClass) throws MailingListClientException {
         HttpPost request = new HttpPost(withBaseUrl(uri));
         request.setEntity(createEntity(body));
@@ -104,8 +138,45 @@ class MailchimpInternalHttpClient {
         return doRequest(request, responseClass);
     }
 
-    <T> T get(String uri, Class<T> responseClass) throws MailingListClientException {
-        HttpGet request = new HttpGet(withBaseUrl(uri));
+    /**
+     * Completes a put request for a resource, converts the given
+     * request body to JSON and the response to the given type.
+     *
+     * @param uri           the location of the resource that the
+     *                      request will put to. This is relative to
+     *                      the base URL for Mailchimp.
+     * @param body          the object for the body, which will be
+     *                      converted to JSON.
+     * @param responseClass the class of the response.
+     * @param <T>           the type of the response, taken from the
+     *                      given class.
+     * @return the response body converted from JSON to the correct
+     * type.
+     * @throws MailingListClientException if the resource is unavailable.
+     */
+    <T> T put(String uri, Object body, Class<T> responseClass) throws MailingListClientException {
+        HttpPut request = new HttpPut(withBaseUrl(uri));
+        request.setEntity(createEntity(body));
+
+        return doRequest(request, responseClass);
+    }
+
+    /**
+     * Completes a delete request for a resource, converts the response
+     * to the given type.
+     *
+     * @param uri           the location of the resource that the
+     *                      request will delete. This is relative to
+     *                      the base URL for Mailchimp.
+     * @param responseClass the class of the response
+     * @param <T>           the type of the response, taken from the
+     *                      given class
+     * @return the response body converted from JSON to the correct
+     * type.
+     * @throws MailingListClientException if the resource is unavailable.
+     */
+    <T> T delete(String uri, Class<T> responseClass) throws MailingListClientException {
+        HttpDelete request = new HttpDelete(withBaseUrl(uri));
 
         return doRequest(request, responseClass);
     }
