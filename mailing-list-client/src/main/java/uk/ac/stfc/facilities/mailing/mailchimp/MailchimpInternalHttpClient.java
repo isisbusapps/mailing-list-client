@@ -35,12 +35,22 @@ import java.time.LocalDateTime;
  */
 class MailchimpInternalHttpClient {
 
+    /**
+     * The Mailchimp username for basic authentication doesn't matter,
+     * as long as some value is provided, it will be accepted. In this
+     * situation, &ldquo;user&rdquo; has been used as a placeholder.
+     */
+    private static final String MAILCHIMP_USERNAME_PLACEHOLDER = "user";
+
     private static final Logger LOG = LogManager.getLogger();
 
     public static MailchimpInternalHttpClient getInstance(MailchimpClientConfiguration configuration) {
 
         CredentialsProvider provider = new BasicCredentialsProvider();
-        Credentials credentials = new UsernamePasswordCredentials("user", configuration.getApiKey());
+        Credentials credentials = new UsernamePasswordCredentials(
+                MAILCHIMP_USERNAME_PLACEHOLDER,
+                configuration.getApiKey()
+        );
         provider.setCredentials(AuthScope.ANY, credentials);
 
         AuthCache authCache = new BasicAuthCache();
