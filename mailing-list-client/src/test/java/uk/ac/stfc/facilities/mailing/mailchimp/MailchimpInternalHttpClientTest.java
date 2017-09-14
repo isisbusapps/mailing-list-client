@@ -68,7 +68,8 @@ public class MailchimpInternalHttpClientTest {
     }
 
     // dash is required in the api key
-    private static final MailchimpClientConfiguration config = new MailchimpClientConfiguration("abcd-ab1");
+    private static final MailchimpClientConfiguration EXAMPLE_CONFIGURATION =
+            new MailchimpClientConfiguration("abcd-ab1");
 
     private static final IOException EXPECTED_IO_EXCEPTION_CAUSE = new IOException("test");
     private static final String TEST_DTO_JSON = "{\"value\":\"hello world\"}";
@@ -236,7 +237,7 @@ public class MailchimpInternalHttpClientTest {
                 .thenReturn(mockedHttpResponse);
 
 
-        return new MailchimpInternalHttpClient(config, mockedHttpClient, mockedHttpContext);
+        return new MailchimpInternalHttpClient(EXAMPLE_CONFIGURATION, mockedHttpClient, mockedHttpContext);
     }
 
     private MailchimpInternalHttpClient setupResponseWithBody(Class<? extends HttpUriRequest> requestClass) throws IOException {
@@ -249,7 +250,7 @@ public class MailchimpInternalHttpClientTest {
                 .thenReturn(mockedHttpResponse);
 
 
-        return new MailchimpInternalHttpClient(config, mockedHttpClient, mockedHttpContext);
+        return new MailchimpInternalHttpClient(EXAMPLE_CONFIGURATION, mockedHttpClient, mockedHttpContext);
     }
 
     private MailchimpInternalHttpClient setupIOExceptionOnRequestExecution(Class<? extends HttpUriRequest> requestClass) throws IOException {
@@ -257,7 +258,7 @@ public class MailchimpInternalHttpClientTest {
         when(mockedHttpClient.execute(isA(requestClass), eq(mockedHttpContext)))
                 .thenThrow(EXPECTED_IO_EXCEPTION_CAUSE);
 
-        return new MailchimpInternalHttpClient(config, mockedHttpClient, mockedHttpContext);
+        return new MailchimpInternalHttpClient(EXAMPLE_CONFIGURATION, mockedHttpClient, mockedHttpContext);
     }
 
     private MailchimpInternalHttpClient setupResponseWithStatusCode(Class<? extends HttpUriRequest> requestClass, int statusCode) throws IOException {
@@ -269,7 +270,7 @@ public class MailchimpInternalHttpClientTest {
         when(mockedHttpClient.execute(isA(requestClass), eq(mockedHttpContext)))
                 .thenReturn(mockedHttpResponse);
 
-        return new MailchimpInternalHttpClient(config, mockedHttpClient, mockedHttpContext);
+        return new MailchimpInternalHttpClient(EXAMPLE_CONFIGURATION, mockedHttpClient, mockedHttpContext);
     }
 
     private MailchimpInternalHttpClient setupResponseWithNullEntity(Class<? extends HttpUriRequest> requestClass) throws IOException {
@@ -280,6 +281,6 @@ public class MailchimpInternalHttpClientTest {
         when(mockedHttpClient.execute(isA(requestClass), eq(mockedHttpContext)))
                 .thenReturn(mockedHttpResponse);
 
-        return new MailchimpInternalHttpClient(config, mockedHttpClient, mockedHttpContext);
+        return new MailchimpInternalHttpClient(EXAMPLE_CONFIGURATION, mockedHttpClient, mockedHttpContext);
     }
 }
