@@ -154,20 +154,40 @@ public class MailchimpClientIT {
             }
 
             @Nested
-            @DisplayName("can delete")
+            @DisplayName("when deleting")
             public class Deleting {
-                @BeforeEach
-                public void ensureRandomUserExists() throws MailingListClientException {
 
-                    addExpectedUser();
+                @Nested
+                @DisplayName("can delete")
+                public class Successfully {
+
+                    @BeforeEach
+                    public void ensureRandomUserExists() throws MailingListClientException {
+
+                        addExpectedUser();
+                    }
+
+                    @Test
+                    @DisplayName("members from a list")
+                    public void deleteMemberFromList() throws MailingListClientException {
+                        mailchimpClient.deleteMemberFromList(listId, expectedUserEmail);
+                    }
                 }
 
-                @Test
-                @DisplayName("members from a list")
-                public void deleteMemberFromList() throws MailingListClientException {
-                    mailchimpClient.deleteMemberFromList(listId, expectedUserEmail);
+                @Nested
+                @DisplayName("a non-existant member")
+                public class NonExistantMember {
+
+                    @Test
+                    @DisplayName("can't be deleted")
+                    public void deleteMemberFromList() throws MailingListClientException {
+                        assertThatThrownBy(() -> mailchimpClient.deleteMemberFromList(listId, expectedUserEmail))
+                                .isInstanceOf(NotFoundMailingListClientException.class);
+                    }
                 }
             }
+
+
 
         }
     }
