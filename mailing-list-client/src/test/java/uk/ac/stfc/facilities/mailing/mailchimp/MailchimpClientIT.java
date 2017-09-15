@@ -44,6 +44,20 @@ public class MailchimpClientIT {
 
     private static MailchimpClient mailchimpClient;
 
+    private static String loadProperty(Properties properties, String key) {
+        final String EXCEPTION_MESSAGE = ""
+                + "\"{}\" was not specified in the application.test.properties file. This key is required to run these"
+                + " tests. This file should be placed in the directory that the tests are running from.";
+
+        String value = properties.getProperty(key);
+
+        if (value == null || value.isEmpty()) {
+            throw new RuntimeException(EXCEPTION_MESSAGE.replace("{}", key));
+        }
+
+        return value;
+    }
+
     @BeforeAll
     public static void setupClass() throws IOException {
         Properties properties = new Properties();
@@ -52,14 +66,15 @@ public class MailchimpClientIT {
 
         properties.load(new FileInputStream(file));
 
-        String mailchimpApiKey = properties.getProperty("mailchimp.api.key");
+        String mailchimpApiKey =  loadProperty(properties, "mailchimp.api.key");
 
         mailchimpClient = MailchimpClient.getInstance(new MailchimpClientConfiguration(mailchimpApiKey));
 
-        listId = properties.getProperty("mailchimp.list.id");
-        listName = properties.getProperty("mailchimp.list.name");
+        listId = loadProperty(properties, "mailchimp.list.id");
 
-        testDomain = properties.getProperty("mailchimp.test.domain");
+        listName = loadProperty(properties, "mailchimp.list.name");
+
+        testDomain = loadProperty(properties, "mailchimp.test.domain");
 
         permenantEmail1 = "permenant.test.1@" + testDomain;
         permenantEmail2 = "permenant.test.2@" + testDomain;
