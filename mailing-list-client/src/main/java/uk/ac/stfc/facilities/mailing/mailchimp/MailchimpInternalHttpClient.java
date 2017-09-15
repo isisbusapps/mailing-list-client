@@ -211,28 +211,37 @@ class MailchimpInternalHttpClient {
             HttpUriRequest request,
             HttpResponse response) throws IOException, MailingListClientException {
 
-        switch (response.getStatusLine().getStatusCode()) {
-            case HttpStatus.SC_OK:
-            case HttpStatus.SC_CREATED:
-            case HttpStatus.SC_ACCEPTED:
-            case HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION:
-            case HttpStatus.SC_NO_CONTENT:
-            case HttpStatus.SC_RESET_CONTENT:
-            case HttpStatus.SC_PARTIAL_CONTENT:
-            case HttpStatus.SC_MULTI_STATUS:
-                return;
-            case HttpStatus.SC_NOT_FOUND:
-                throw new NotFoundMailingListClientException(
-                        "Could not find resource for " + request.getURI().toString());
-            default:
-                String errorMessage = String.format("failed %s request for %s with %s and body \"%s\"",
-                        request.getMethod(),
-                        request.getURI(),
-                        response.getStatusLine(),
-                        EntityUtils.toString(response.getEntity()));
+        try {
 
-                throw new MailingListClientException(errorMessage);
+            switch (response.getStatusLine().getStatusCode()) {
+                case HttpStatus.SC_OK:
+                case HttpStatus.SC_CREATED:
+                case HttpStatus.SC_ACCEPTED:
+                case HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION:
+                case HttpStatus.SC_NO_CONTENT:
+                case HttpStatus.SC_RESET_CONTENT:
+                case HttpStatus.SC_PARTIAL_CONTENT:
+                case HttpStatus.SC_MULTI_STATUS:
+                    return;
+                case HttpStatus.SC_NOT_FOUND:
+                    String notFoundErrorMessage =
+                            String.format("Could not find resource for %s. The response body was: \"%s\"",
+                                request.getURI(),
+                                EntityUtils.toString(response.getEntity()));
+                    throw new NotFoundMailingListClientException(notFoundErrorMessage);
+                default:
+                    String unexpectedErrorMessage = String.format("failed %s request for %s with %s and body \"%s\"",
+                            request.getMethod(),
+                            request.getURI(),
+                            response.getStatusLine(),
+                            EntityUtils.toString(response.getEntity()));
 
+                    throw new MailingListClientException(unexpectedErrorMessage);
+
+            }
+        } catch (MailingListClientException e) {
+            EntityUtils.consumeQuietly(response.getEntity());
+            throw e;
         }
     }
 
