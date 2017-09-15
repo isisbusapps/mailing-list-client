@@ -25,9 +25,9 @@ public class MailchimpClientIT {
 
     private static final String EXPECTED_SEGMENT_NAME = "test";
 
-    private static final SubscriptionStatus PERMENANT_SUBSCRIPTION_STATUS_1 = SubscriptionStatus.SUBSCRIBED;
-    private static final SubscriptionStatus PERMENANT_SUBSCRIPTION_STATUS_2 = SubscriptionStatus.SUBSCRIBED;
-    private static final SubscriptionStatus PERMENANT_SUBSCRIPTION_STATUS_3 = SubscriptionStatus.UNSUBSCRIBED;
+    private static final SubscriptionStatus PERMANENT_SUBSCRIPTION_STATUS_1 = SubscriptionStatus.SUBSCRIBED;
+    private static final SubscriptionStatus PERMANENT_SUBSCRIPTION_STATUS_2 = SubscriptionStatus.SUBSCRIBED;
+    private static final SubscriptionStatus PERMANENT_SUBSCRIPTION_STATUS_3 = SubscriptionStatus.UNSUBSCRIBED;
 
     private static String expectedUserEmail;
 
@@ -38,9 +38,9 @@ public class MailchimpClientIT {
 
     private static String noSuchMemberEmail;
 
-    private static String permenantEmail1;
-    private static String permenantEmail2;
-    private static String permenantEmail3;
+    private static String permanentEmail1;
+    private static String permanentEmail2;
+    private static String permanentEmail3;
 
     private static MailchimpClient mailchimpClient;
 
@@ -76,9 +76,9 @@ public class MailchimpClientIT {
 
         testDomain = loadProperty(properties, "mailchimp.test.domain");
 
-        permenantEmail1 = "permenant.test.1@" + testDomain;
-        permenantEmail2 = "permenant.test.2@" + testDomain;
-        permenantEmail3 = "permenant.test.3@" + testDomain;
+        permanentEmail1 = "permanent.test.1@" + testDomain;
+        permanentEmail2 = "permanent.test.2@" + testDomain;
+        permanentEmail3 = "permanent.test.3@" + testDomain;
 
         noSuchMemberEmail = "no.such.member@" + testDomain;
 
@@ -144,9 +144,9 @@ public class MailchimpClientIT {
                     assertThat(mailingListMembers.getMembers())
                             .extracting(EMAIL_ADDRESS_FIELD_NAME, SUBSCRIPTION_STATUS_FIELD_NAME)
                             .contains(
-                                    tuple(permenantEmail1, PERMENANT_SUBSCRIPTION_STATUS_1),
-                                    tuple(permenantEmail2, PERMENANT_SUBSCRIPTION_STATUS_2),
-                                    tuple(permenantEmail3, PERMENANT_SUBSCRIPTION_STATUS_3)
+                                    tuple(permanentEmail1, PERMANENT_SUBSCRIPTION_STATUS_1),
+                                    tuple(permanentEmail2, PERMANENT_SUBSCRIPTION_STATUS_2),
+                                    tuple(permanentEmail3, PERMANENT_SUBSCRIPTION_STATUS_3)
                             );
 
                 }
