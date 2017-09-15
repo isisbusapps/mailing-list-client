@@ -2,6 +2,7 @@ package uk.ac.stfc.facilities.mailing.api;
 
 import uk.ac.stfc.facilities.mailing.api.data.*;
 import uk.ac.stfc.facilities.mailing.api.exceptions.MailingListClientException;
+import uk.ac.stfc.facilities.mailing.api.exceptions.NotFoundMailingListClientException;
 
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public interface MailingListClient {
      * Retrieves all lists.
      *
      * @return the retrieved lists
+     *
      * @throws MailingListClientException if the resource is unavailable
      */
     MailingListDescriptors getAllListDescriptors()
@@ -28,8 +30,12 @@ public interface MailingListClient {
      * Retrieves the list with the given list ID.
      *
      * @param listId the ID of the list to retrieve
+     *
      * @return the list with the given list ID
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListDescriptor getListDescriptor(String listId)
             throws MailingListClientException;
@@ -39,8 +45,12 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list from which the members are
      *               retrieved
+     *
      * @return all members of the list by the given list ID
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListMembers getMembersByList(String listId)
             throws MailingListClientException;
@@ -51,8 +61,13 @@ public interface MailingListClient {
      * @param listId the ID of the list from which the members is
      *               retrieved
      * @param email  the email of the member to retrieve
+     *
      * @return the member of the list with the given email
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the ID does
+     *                                            not exist or the member of the
+     *                                            list does not exist
      */
     MailingListMember getMemberOfList(String listId, String email)
             throws MailingListClientException;
@@ -67,9 +82,13 @@ public interface MailingListClient {
      * @param listId the ID of the list to which the member will be
      *               subscribed
      * @param email  the email of the member which will be subscribed
+     *
      * @return the member of the list for which the subscription was
      * requested
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListMember subscribeMember(String listId, String email)
             throws MailingListClientException;
@@ -84,9 +103,13 @@ public interface MailingListClient {
      * @param listId the ID of the list from which the member will be
      *               unsubscribed
      * @param email  the email of the member which will be unsubscribed
+     *
      * @return the member of the list for which the unsubscription was
      * requested
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListMember unsubscribeMember(String listId, String email)
             throws MailingListClientException;
@@ -99,9 +122,13 @@ public interface MailingListClient {
      * @param listId the ID of the list to which the member will be
      *               subscribed
      * @param email  the email of the member which will be subscribed
+     *
      * @return the member of the list for which the subcription was
      * requested
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListMember forceSubscribeMember(String listId, String email)
             throws MailingListClientException;
@@ -114,9 +141,13 @@ public interface MailingListClient {
      * @param listId the ID of the list from which the member will
      *               be unsubcribed
      * @param email  the email of the member which will be unsubscribed
+     *
      * @return the member of the list for which the unsubscription was
      * requested
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListMember forceUnsubscribeMember(String listId, String email)
             throws MailingListClientException;
@@ -129,6 +160,11 @@ public interface MailingListClient {
      * @param listId the ID of the list from which the member will be
      *               removed from
      * @param email  the email of the member who will be removed
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist or the member
+     *                                            of the list does not exist
      */
     void deleteMemberFromList(String listId, String email)
             throws MailingListClientException;
@@ -138,8 +174,12 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list from which to retrieve the
      *               segment
+     *
      * @return the segments of the list with the given ID
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListSegmentDescriptors getSegmentDescriptors(String listId)
             throws MailingListClientException;
@@ -150,8 +190,14 @@ public interface MailingListClient {
      * @param listId    the ID of the list from which to retrieve the
      *                  segment
      * @param segmentId the ID of the segment to retrieve
+     *
      * @return the segment of the list with the given ID
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist or if the
+     *                                            segment with the given ID does
+     *                                            not exist
      */
     MailingListSegmentDescriptor getSegmentDescriptor(String listId, String segmentId)
             throws MailingListClientException;
@@ -164,8 +210,14 @@ public interface MailingListClient {
      *                  segment members
      * @param segmentId the ID of the segment to retrieve the segment
      *                  members
+     *
      * @return the members for the segment with the given ID
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist or if the
+     *                                            segment with the given ID does
+     *                                            not exist
      */
     MailingListMembers getMembersOfSegment(String listId, String segmentId)
             throws MailingListClientException;
@@ -178,8 +230,14 @@ public interface MailingListClient {
      * @param listId    the ID of the list in which the segment is
      * @param segmentId the ID of the segment to add the members to
      * @param emails    the emails of the members to add
+     *
      * @return the successfully added members
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist or if the
+     *                                            segment with the given ID does
+     *                                            not exist
      */
     MailingListSegmentMemberChanges addMembersToSegment(String listId, String segmentId, Set<String> emails)
             throws MailingListClientException;
@@ -191,8 +249,14 @@ public interface MailingListClient {
      * @param listId    the ID of the list in which the segment is
      * @param segmentId the ID of the segment to remove the members from
      * @param emails    the emails of the members to remove
+     *
      * @return the successfully removed members
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with given ID does
+     *                                            not exist or if the segment
+     *                                            with the given ID does not
+     *                                            exist
      */
     MailingListSegmentMemberChanges removeMembersFromSegment(String listId, String segmentId, Set<String> emails)
             throws MailingListClientException;
@@ -203,8 +267,12 @@ public interface MailingListClient {
      * @param listId      the ID of the list in which to create the
      *                    segment
      * @param segmentName the name of the segment
+     *
      * @return the descriptor of the segment
-     * @throws MailingListClientException if the resource is unavailable
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist
      */
     MailingListSegmentDescriptor createSegment(String listId, String segmentName)
             throws MailingListClientException;
@@ -212,9 +280,14 @@ public interface MailingListClient {
     /**
      * Deletes the segment with the given ID in the given list.
      *
-     * @param listId this ID of the list in which to create the segment
-     * @param segmentId     the ID of the segment
-     * @throws MailingListClientException if the resource is unavailable
+     * @param listId    this ID of the list in which to create the segment
+     * @param segmentId the ID of the segment
+     *
+     * @throws MailingListClientException         if the resource is unavailable
+     * @throws NotFoundMailingListClientException if the list with the given ID
+     *                                            does not exist or if the
+     *                                            segment with the given ID does
+     *                                            not exist
      */
     void deleteSegment(String listId, String segmentId)
             throws MailingListClientException;
