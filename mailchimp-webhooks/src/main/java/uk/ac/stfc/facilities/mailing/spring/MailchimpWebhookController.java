@@ -2,8 +2,11 @@ package uk.ac.stfc.facilities.mailing.spring;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import uk.ac.stfc.facilities.mailing.person.client.PersonSubscriptionClientException;
 
 /**
  * A Spring controller that listens to webhooks from Mailchimp, it
@@ -17,6 +20,13 @@ public class MailchimpWebhookController {
 
     private static final Logger LOGGER = LogManager.getLogger();
 
+    private final MarketingSubscriptionManager marketingSubscriptionManager;
+
+    public MailchimpWebhookController(
+            @Autowired MarketingSubscriptionManager marketingSubscriptionManager) {
+        this.marketingSubscriptionManager = marketingSubscriptionManager;
+    }
+
     /**
      * A simple method to respond with a successful status which is
      * required for Mailchimp to accept a webhook client.
@@ -28,16 +38,34 @@ public class MailchimpWebhookController {
 
     /**
      * A webhook that listens to changes to a user&apos;s email
-     * address change.
+     * address change from MailChimp.
+     *
      * @param oldEmail the old email for the user
      * @param newEmail the new email for the user
      */
-    @PostMapping
+    @PostMapping(params = "type=upemail")
     @ResponseBody
-    public void hook(
+    public void changeEmail(
             @RequestParam("data[old_email]") String oldEmail,
             @RequestParam("data[new_email]") String newEmail
-    ) {
-        LOGGER.info("old: " + oldEmail + " to " + newEmail);
+    ) throws PersonSubscriptionClientException {
+
+        marketingSubscriptionManager.updateEmail(oldEmail, newEmail);
+
+    }
+
+    /**
+     * A webhook that listens to changes to an unsubscription request
+     * from users in MailChimp
+     *
+     * @param email the user&apos;s email
+     */
+    @PostMapping(params = "type=unsubscribe")
+    @ResponseBody
+    public void unsubscribe(
+            @RequestParam("data[email]") String email
+    ) throws PersonSubscriptionClientException {
+        marketingSubscriptionManager.unsubscribeUser(email);
+
     }
 }

@@ -3,3 +3,5 @@
 # This will mean the Webhook URL will look like "${base.uri}/${mailing.key}"
 mailing.webhook.key=
 
+# Defines the location of the BisAppSettings configuration file.
+config.bisappsettings.path=

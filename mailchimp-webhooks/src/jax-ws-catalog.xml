@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="https://localhost:8181/UserOfficeWebService/UserOfficeWebService?wsdl"
+            uri="wsdl/UserOfficeWebService/UserOfficeWebService.wsdl"/>
+    <system systemId="https://localhost:8181/UserOfficeWebService/UserOfficeWebService?xsd=1"
+            uri="wsdl/UserOfficeWebService/UserOfficeWebService.xsd_1.xsd"/>
+    <system systemId="https://localhost:8181/UserOfficeWebService/UserOfficeWebService?xsd=2"
+            uri="wsdl/UserOfficeWebService/UserOfficeWebService.xsd_2.xsd"/>
+</catalog>
