@@ -67,7 +67,7 @@ public class UowsPersonSubscriptionClient implements PersonSubscriptionClient<Uo
             return new UowsPersonSubscriptionDetails(getWebServicePort().getPersonDTOByMarketingEmail(sessionId, marketingEmail));
         } catch (SessionException_Exception | UserPermissionsException_Exception e) {
             LOG.warn("Unable to get person", e);
-            throw new PersonSubscriptionClientException("Unable to get retrieve person details", e);
+            throw new PersonSubscriptionClientException("Unable to retrieve person details", e);
         }
     }
 
