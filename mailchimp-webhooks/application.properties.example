@@ -3,5 +3,8 @@
 # This will mean the Webhook URL will look like "${base.uri}/${mailing.key}"
 mailing.webhook.key=
 
+# The session ID that is used to update the User Office Web Service
+mailchimp.webhooks.client.session-id=
+
 # Defines the location of the BisAppSettings configuration file.
 config.bisappsettings.path=
