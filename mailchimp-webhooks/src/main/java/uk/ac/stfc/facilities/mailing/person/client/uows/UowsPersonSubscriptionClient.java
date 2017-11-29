@@ -18,7 +18,7 @@ import java.util.Map;
  * Integrates with the UserOfficeWebService and acts as a facade.
  */
 @Component
-public class PersonSubscriptionClientUows implements PersonSubscriptionClient<UowsPersonSubscriptionDetails> {
+public class UowsPersonSubscriptionClient implements PersonSubscriptionClient<UowsPersonSubscriptionDetails> {
 
     private static final Logger LOG = LogManager.getLogger();
 
@@ -28,14 +28,14 @@ public class PersonSubscriptionClientUows implements PersonSubscriptionClient<Uo
     private UserOfficeWebService_Service uows;
 
     /**
-     * Creates a PersonSubscriptionClientUows with the required session information
+     * Creates a UowsPersonSubscriptionClient with the required session information
      * and the URL for the web service.
      *
      * @param sessionId the session ID required to make changes to
      *                  people's email addresses
      * @param url       the URL of the user office web service.
      */
-    public PersonSubscriptionClientUows(
+    public UowsPersonSubscriptionClient(
             @Value("${mailchimp.webhooks.client.session-id}") String sessionId,
             @Value("${UserOfficeWebServiceURL}") String url) {
         this.sessionId = sessionId;
