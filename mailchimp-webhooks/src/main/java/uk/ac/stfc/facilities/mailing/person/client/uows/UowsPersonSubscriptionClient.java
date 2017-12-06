@@ -62,7 +62,8 @@ public class UowsPersonSubscriptionClient implements PersonSubscriptionClient<Uo
      *                                           details
      */
     @Override
-    public UowsPersonSubscriptionDetails getPersonByMarketingEmail(String marketingEmail) throws PersonSubscriptionClientException {
+    public UowsPersonSubscriptionDetails getPersonByMarketingEmail(String marketingEmail)
+            throws PersonSubscriptionClientException {
         try {
             return new UowsPersonSubscriptionDetails(getWebServicePort().getPersonDTOByMarketingEmail(sessionId, marketingEmail));
         } catch (SessionException_Exception | UserPermissionsException_Exception e) {
@@ -80,9 +81,11 @@ public class UowsPersonSubscriptionClient implements PersonSubscriptionClient<Uo
      *                                           person
      */
     @Override
-    public void savePerson(UowsPersonSubscriptionDetails personSubscriptionDetails) throws PersonSubscriptionClientException {
+    public void savePerson(UowsPersonSubscriptionDetails personSubscriptionDetails)
+            throws PersonSubscriptionClientException {
         try {
-            getWebServicePort().updatePersonByDTO(sessionId, personSubscriptionDetails.getPersonDTO());
+            getWebServicePort().updatePersonByDTOFromSource(
+                    sessionId, personSubscriptionDetails.getPersonDTO(), RequestSourceDTO.MAILING_API);
         } catch (PersonDTOException_Exception | SessionException_Exception e) {
             LOG.warn("Unable to save person", e);
             throw new PersonSubscriptionClientException("Unable to save person", e);
