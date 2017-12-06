@@ -1,8 +1,11 @@
-package uk.ac.stfc.facilities.mailing.spring;
+package uk.ac.stfc.facilities.mailing;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * Entry point for the Mailchimp webhooks application.
+ */
 @SpringBootApplication
 public class Application {
 

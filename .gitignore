@@ -1,6 +1,8 @@
 target
 *.class
 
+/mailchimp-webhooks/application.properties
+
 # intellij
 *.iml
 .idea
