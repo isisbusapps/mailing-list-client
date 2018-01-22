@@ -2,6 +2,7 @@ target
 *.class
 
 /mailchimp-webhooks/application.properties
+/mailchimp-webhooks/application.test.properties
 
 # intellij
 *.iml
