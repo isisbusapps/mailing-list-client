@@ -12,7 +12,7 @@ import uk.ac.stfc.facilities.mailing.person.client.PersonSubscriptionDetails;
 @Service
 public class MarketingSubscriptionManager {
 
-    private final PersonSubscriptionClient<PersonSubscriptionDetails> personSubscriptionClient;
+    private final PersonSubscriptionClient personSubscriptionClient;
 
     /**
      * Creates a marketing subscription manager with the given person
@@ -22,7 +22,7 @@ public class MarketingSubscriptionManager {
      *                                 client
      */
     public MarketingSubscriptionManager(
-            @Autowired PersonSubscriptionClient<PersonSubscriptionDetails> personSubscriptionClient
+            @Autowired PersonSubscriptionClient personSubscriptionClient
     ) {
         this.personSubscriptionClient = personSubscriptionClient;
     }
