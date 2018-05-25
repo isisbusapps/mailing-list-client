@@ -14,11 +14,15 @@
 
 <xs:element name="FacilityException" type="tns:FacilityException"/>
 
+<xs:element name="NoPreviousRecordsException" type="tns:NoPreviousRecordsException"/>
+
 <xs:element name="PersonDTOException" type="tns:PersonDTOException"/>
 
 <xs:element name="SessionException" type="tns:SessionException"/>
 
 <xs:element name="SessionIdInvalidException" type="tns:SessionIdInvalidException"/>
+
+<xs:element name="UnableToDeleteEstablishmentException" type="tns:UnableToDeleteEstablishmentException"/>
 
 <xs:element name="UserAccountLockedException" type="tns:UserAccountLockedException"/>
 
@@ -88,6 +92,14 @@
 
 <xs:element name="createPersonResponse" type="tns:createPersonResponse"/>
 
+<xs:element name="deactivatePerson" type="tns:deactivatePerson"/>
+
+<xs:element name="deactivatePersonResponse" type="tns:deactivatePersonResponse"/>
+
+<xs:element name="deleteEstablishmentById" type="tns:deleteEstablishmentById"/>
+
+<xs:element name="deleteEstablishmentByIdResponse" type="tns:deleteEstablishmentByIdResponse"/>
+
 <xs:element name="denyChanged" type="tns:denyChanged"/>
 
 <xs:element name="denyChangedResponse" type="tns:denyChangedResponse"/>
@@ -116,9 +128,9 @@
 
 <xs:element name="getAddressesResponse" type="tns:getAddressesResponse"/>
 
-<xs:element name="getAgeDisclosureOptions" type="tns:getAgeDisclosureOptions"/>
+<xs:element name="getAgeRangeOptions" type="tns:getAgeRangeOptions"/>
 
-<xs:element name="getAgeDisclosureOptionsResponse" type="tns:getAgeDisclosureOptionsResponse"/>
+<xs:element name="getAgeRangeOptionsResponse" type="tns:getAgeRangeOptionsResponse"/>
 
 <xs:element name="getAllCountries" type="tns:getAllCountries"/>
 
@@ -171,6 +183,14 @@
 <xs:element name="getEmailFromFedId" type="tns:getEmailFromFedId"/>
 
 <xs:element name="getEmailFromFedIdResponse" type="tns:getEmailFromFedIdResponse"/>
+
+<xs:element name="getEmergencyContact" type="tns:getEmergencyContact"/>
+
+<xs:element name="getEmergencyContactDTO" type="tns:getEmergencyContactDTO"/>
+
+<xs:element name="getEmergencyContactDTOResponse" type="tns:getEmergencyContactDTOResponse"/>
+
+<xs:element name="getEmergencyContactResponse" type="tns:getEmergencyContactResponse"/>
 
 <xs:element name="getEstablishment" type="tns:getEstablishment"/>
 
@@ -251,6 +271,10 @@
 <xs:element name="getMatchingPeople" type="tns:getMatchingPeople"/>
 
 <xs:element name="getMatchingPeopleResponse" type="tns:getMatchingPeopleResponse"/>
+
+<xs:element name="getMonitorDTO" type="tns:getMonitorDTO"/>
+
+<xs:element name="getMonitorDTOResponse" type="tns:getMonitorDTOResponse"/>
 
 <xs:element name="getNewAddress" type="tns:getNewAddress"/>
 
@@ -380,6 +404,14 @@
 
 <xs:element name="getPersonsFacilitiesResponse" type="tns:getPersonsFacilitiesResponse"/>
 
+<xs:element name="getPrivacyDTO" type="tns:getPrivacyDTO"/>
+
+<xs:element name="getPrivacyDTOResponse" type="tns:getPrivacyDTOResponse"/>
+
+<xs:element name="getSearchablePersonByEmail" type="tns:getSearchablePersonByEmail"/>
+
+<xs:element name="getSearchablePersonByEmailResponse" type="tns:getSearchablePersonByEmailResponse"/>
+
 <xs:element name="getUpdatedUsers" type="tns:getUpdatedUsers"/>
 
 <xs:element name="getUpdatedUsersResponse" type="tns:getUpdatedUsersResponse"/>
@@ -500,6 +532,14 @@
 
 <xs:element name="removeDrivingPermitResponse" type="tns:removeDrivingPermitResponse"/>
 
+<xs:element name="requestLinkExistingFedId" type="tns:requestLinkExistingFedId"/>
+
+<xs:element name="requestLinkExistingFedIdResponse" type="tns:requestLinkExistingFedIdResponse"/>
+
+<xs:element name="requestNewFedId" type="tns:requestNewFedId"/>
+
+<xs:element name="requestNewFedIdResponse" type="tns:requestNewFedIdResponse"/>
+
 <xs:element name="resetPassword" type="tns:resetPassword"/>
 
 <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
@@ -524,6 +564,18 @@
 
 <xs:element name="sendPasswordResetResponse" type="tns:sendPasswordResetResponse"/>
 
+<xs:element name="setEmergencyContact" type="tns:setEmergencyContact"/>
+
+<xs:element name="setEmergencyContactResponse" type="tns:setEmergencyContactResponse"/>
+
+<xs:element name="setMonitorDTO" type="tns:setMonitorDTO"/>
+
+<xs:element name="setMonitorDTOResponse" type="tns:setMonitorDTOResponse"/>
+
+<xs:element name="setPrivacyDTO" type="tns:setPrivacyDTO"/>
+
+<xs:element name="setPrivacyDTOResponse" type="tns:setPrivacyDTOResponse"/>
+
 <xs:element name="unlinkAlternativeIdentifierToUser" type="tns:unlinkAlternativeIdentifierToUser"/>
 
 <xs:element name="unlinkAlternativeIdentifierToUserResponse" type="tns:unlinkAlternativeIdentifierToUserResponse"/>
@@ -539,6 +591,10 @@
 <xs:element name="updateAlternativeIdentifiersForUser" type="tns:updateAlternativeIdentifiersForUser"/>
 
 <xs:element name="updateAlternativeIdentifiersForUserResponse" type="tns:updateAlternativeIdentifiersForUserResponse"/>
+
+<xs:element name="updateEmergencyContactDTO" type="tns:updateEmergencyContactDTO"/>
+
+<xs:element name="updateEmergencyContactDTOResponse" type="tns:updateEmergencyContactDTOResponse"/>
 
 <xs:element name="updateEstablishment" type="tns:updateEstablishment"/>
 
@@ -633,7 +689,7 @@
 <xs:sequence>
 <xs:element name="comments" type="xs:string" minOccurs="0"/>
 <xs:element name="dob" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="dpa" type="xs:string" minOccurs="0"/>
+<xs:element name="dpaDate" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
 <xs:element name="establishmentId" type="xs:long" minOccurs="0"/>
 <xs:element name="familyName" type="xs:string" minOccurs="0"/>
@@ -644,22 +700,16 @@
 <xs:element name="gender" type="xs:string" minOccurs="0"/>
 <xs:element name="givenName" type="xs:string" minOccurs="0"/>
 <xs:element name="homeCorrespondenceId" type="xs:long" minOccurs="0"/>
-<xs:element name="homePhone" type="xs:string" minOccurs="0"/>
 <xs:element name="honour" type="xs:string" minOccurs="0"/>
 <xs:element name="initials" type="xs:string" minOccurs="0"/>
-<xs:element name="isisPassword" type="xs:string" minOccurs="0"/>
-<xs:element name="isisSalt" type="xs:string" minOccurs="0"/>
 <xs:element name="jobTitle" type="xs:string" minOccurs="0"/>
 <xs:element name="lastpwdreset" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="marketingEmail" type="xs:string" minOccurs="0"/>
 <xs:element name="mobilePhone" type="xs:string" minOccurs="0"/>
-<xs:element name="monitor" type="tns:monitor" minOccurs="0"/>
-<xs:element name="nationality" type="xs:string" minOccurs="0"/>
 <xs:element name="newUserNumber" type="xs:string" minOccurs="0"/>
 <xs:element name="orgCorrespondenceId" type="xs:long" minOccurs="0"/>
 <xs:element name="orgDeliveryId" type="xs:long" minOccurs="0"/>
 <xs:element name="rid" type="xs:long" minOccurs="0"/>
-<xs:element name="sha2" type="xs:string" minOccurs="0"/>
 <xs:element name="sscNumber" type="xs:string" minOccurs="0"/>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="subscribedToMarketingEmails" type="xs:boolean" minOccurs="0"/>
@@ -683,46 +733,13 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="monitor">
-<xs:complexContent>
-<xs:extension base="tns:userOfficeObject">
-<xs:sequence>
-<xs:element name="ageOption" type="tns:ageOption" minOccurs="0"/>
-<xs:element name="disability" type="tns:disability" minOccurs="0"/>
-<xs:element name="ethnicity" type="tns:ethnicity" minOccurs="0"/>
-<xs:element name="gender" type="tns:gender" minOccurs="0"/>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="optIn" type="tns:monitorOptIn" minOccurs="0"/>
-</xs:sequence>
-</xs:extension>
-</xs:complexContent>
+<xs:complexType name="getAgeRangeOptions">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="ageOption">
+<xs:complexType name="getAgeRangeOptionsResponse">
 <xs:sequence>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="disability">
-<xs:sequence>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="ethnicity">
-<xs:sequence>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="gender">
-<xs:sequence>
-<xs:element name="id" type="xs:long" minOccurs="0"/>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -735,6 +752,43 @@
 <xs:complexType name="getFedIdFromEmailResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPrivacyDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPrivacyDTOResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:privacyDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="privacyDTO">
+<xs:sequence>
+<xs:element name="searchable" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="NoPreviousRecordsException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="UserPermissionsException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="DuplicateRecordsException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -767,8 +821,9 @@
 
 <xs:complexType name="personDTO">
 <xs:sequence>
-<xs:element name="acceptedPolicy" type="xs:boolean" minOccurs="0"/>
+<xs:element name="deactivated" type="xs:boolean" minOccurs="0"/>
 <xs:element name="dob" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="dpaDate" type="xs:dateTime" minOccurs="0"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
 <xs:element name="establishmentId" type="xs:long" minOccurs="0"/>
 <xs:element name="familyName" type="xs:string" minOccurs="0"/>
@@ -776,23 +831,11 @@
 <xs:element name="initials" type="xs:string" minOccurs="0"/>
 <xs:element name="marketingEmail" type="xs:string" minOccurs="0"/>
 <xs:element name="mobilePhone" type="xs:string" minOccurs="0"/>
-<xs:element name="monitor" type="tns:monitorDTO" minOccurs="0"/>
-<xs:element name="nationality" type="xs:string" minOccurs="0"/>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="subscribedToMarketingEmails" type="xs:boolean" minOccurs="0"/>
 <xs:element name="title" type="xs:string" minOccurs="0"/>
 <xs:element name="userNumber" type="xs:string" minOccurs="0"/>
 <xs:element name="workPhone" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="monitorDTO">
-<xs:sequence>
-<xs:element name="ageOption" type="xs:string" minOccurs="0"/>
-<xs:element name="disability" type="xs:string" minOccurs="0"/>
-<xs:element name="ethnicity" type="xs:string" minOccurs="0"/>
-<xs:element name="gender" type="xs:string" minOccurs="0"/>
-<xs:element name="optIn" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -917,6 +960,23 @@
 </xs:complexContent>
 </xs:complexType>
 
+<xs:complexType name="deleteEstablishmentById">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="EstablishmentId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteEstablishmentByIdResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="UnableToDeleteEstablishmentException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="loginWithAlternativeIdentifier">
 <xs:sequence>
 <xs:element name="SystemSessionId" type="xs:string" minOccurs="0"/>
@@ -966,6 +1026,29 @@
 <xs:complexType name="getPeopleNoPermissionsResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:personDTO" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMonitorDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMonitorDTOResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:monitorDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="monitorDTO">
+<xs:sequence>
+<xs:element name="ageOption" type="xs:string" minOccurs="0"/>
+<xs:element name="disability" type="xs:string" minOccurs="0"/>
+<xs:element name="ethnicity" type="xs:string" minOccurs="0"/>
+<xs:element name="gender" type="xs:string" minOccurs="0"/>
+<xs:element name="optIn" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1032,7 +1115,7 @@
 <xs:element name="country" type="xs:string" minOccurs="0"/>
 <xs:element name="deptName" type="xs:string" minOccurs="0"/>
 <xs:element name="dob" type="xs:dateTime" minOccurs="0"/>
-<xs:element name="dpa" type="xs:string" minOccurs="0"/>
+<xs:element name="dpaDate" type="tns:timestamp" minOccurs="0"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
 <xs:element name="establishmentId" type="xs:string" minOccurs="0"/>
 <xs:element name="familyName" type="xs:string" minOccurs="0"/>
@@ -1043,7 +1126,6 @@
 <xs:element name="honour" type="xs:string" minOccurs="0"/>
 <xs:element name="initials" type="xs:string" minOccurs="0"/>
 <xs:element name="mobilePhone" type="xs:string" minOccurs="0"/>
-<xs:element name="nationality" type="xs:string" minOccurs="0"/>
 <xs:element name="orgName" type="xs:string" minOccurs="0"/>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="suffix" type="xs:string" minOccurs="0"/>
@@ -1054,13 +1136,9 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAllNationalities">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAllNationalitiesResponse">
+<xs:complexType name="timestamp">
 <xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="nanos" type="xs:int"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1076,22 +1154,13 @@
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="getUserDetailsFromActivation">
-<xs:sequence>
-<xs:element name="encryptedActivationId" type="xs:string" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="getAllNationalities">
+<xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="getUserDetailsFromActivationResponse">
+<xs:complexType name="getAllNationalitiesResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:userDetailsDTO" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="userDetailsDTO">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1132,28 +1201,42 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="mergeEstablishment">
+<xs:complexType name="getUserDetailsFromActivation">
 <xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="OldEst" type="xs:string" minOccurs="0"/>
-<xs:element name="NewEst" type="xs:string" minOccurs="0"/>
+<xs:element name="encryptedActivationId" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="mergeEstablishmentResponse">
+<xs:complexType name="getUserDetailsFromActivationResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:userDetailsDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="userDetailsDTO">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateEmergencyContactDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="emergencyContactDTO" type="tns:emergencyContactDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="emergencyContactDTO">
+<xs:sequence>
+<xs:element name="contact" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateEmergencyContactDTOResponse">
 <xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="DuplicateRecordsException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="UserPermissionsException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="createPasswordReset">
@@ -1169,17 +1252,16 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createAccountActivation">
+<xs:complexType name="mergeEstablishment">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="OldEst" type="xs:string" minOccurs="0"/>
+<xs:element name="NewEst" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="createAccountActivationResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:long" minOccurs="0"/>
-</xs:sequence>
+<xs:complexType name="mergeEstablishmentResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getEstablishmentsBySearchDetails">
@@ -1213,6 +1295,19 @@
 <xs:element name="organisationName" type="xs:string" minOccurs="0"/>
 <xs:element name="organisationType" type="xs:string" minOccurs="0"/>
 <xs:element name="organisationUrl" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAccountActivation">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createAccountActivationResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1266,6 +1361,35 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="deactivatePerson">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deactivatePersonResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="setPrivacyDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="privacyDTO" type="tns:privacyDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setPrivacyDTOResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="EmailConflictException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getChangesSince">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -1279,17 +1403,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="sendActivationEmail">
-<xs:sequence>
-<xs:element name="email" type="xs:string" minOccurs="0"/>
-<xs:element name="ipAddress" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="sendActivationEmailResponse">
-<xs:sequence/>
-</xs:complexType>
-
 <xs:complexType name="hasLinkExpired">
 <xs:sequence>
 <xs:element name="activeationId" type="xs:long" minOccurs="0"/>
@@ -1300,6 +1413,17 @@
 <xs:sequence>
 <xs:element name="return" type="xs:boolean" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendActivationEmail">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="ipAddress" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sendActivationEmailResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="acceptChanges">
@@ -1325,6 +1449,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getFedIdAsPerson">
+<xs:sequence>
+<xs:element name="fedId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFedIdAsPersonResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:person" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getMatchingEstablishmentWithMultipleSearchTerms">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -1335,18 +1471,6 @@
 <xs:complexType name="getMatchingEstablishmentWithMultipleSearchTermsResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:establishment" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getFedIdAsPerson">
-<xs:sequence>
-<xs:element name="fedId" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getFedIdAsPersonResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:person" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1434,12 +1558,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="EmailConflictException">
-<xs:sequence>
-<xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getAllEstablishmentDTOs">
 <xs:sequence/>
 </xs:complexType>
@@ -1467,6 +1585,18 @@
 <xs:element name="site" type="xs:string" minOccurs="0"/>
 <xs:element name="street" type="xs:string" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setMonitorDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="monitorDTO" type="tns:monitorDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setMonitorDTOResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="createNextOfKin">
@@ -1507,18 +1637,6 @@
 <xs:sequence/>
 </xs:complexType>
 
-<xs:complexType name="getPersonTitleCollection">
-<xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getPersonTitleCollectionResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="activateAccount">
 <xs:sequence>
 <xs:element name="encryptedActivationId" type="xs:string" minOccurs="0"/>
@@ -1531,6 +1649,18 @@
 <xs:sequence/>
 </xs:complexType>
 
+<xs:complexType name="getPersonTitleCollection">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPersonTitleCollectionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:anyType" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getUserIdFromFedId">
 <xs:sequence>
 <xs:element name="FedId" type="xs:string" minOccurs="0"/>
@@ -1540,6 +1670,19 @@
 <xs:complexType name="getUserIdFromFedIdResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSearchablePersonByEmail">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="emailAddress" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSearchablePersonByEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:person" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1591,16 +1734,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAllFacilityNames">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAllFacilityNamesResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="createFedId">
 <xs:sequence>
 <xs:element name="sessionId" type="xs:string" minOccurs="0"/>
@@ -1609,12 +1742,23 @@
 <xs:element name="person" type="tns:person" minOccurs="0"/>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="expiryDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="fedIdDob" type="xs:dateTime" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="createFedIdResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getAllFacilityNames">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllFacilityNamesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1700,16 +1844,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAllPersonStatuses">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAllPersonStatusesResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="mergeUser">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -1720,6 +1854,16 @@
 
 <xs:complexType name="mergeUserResponse">
 <xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllPersonStatuses">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getAllPersonStatusesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="sendPasswordReset">
@@ -1770,18 +1914,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getPersonDetailsByUserNumber">
-<xs:sequence>
-<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getPersonDetailsByUserNumberResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:personDetailsDTO" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="createAddress">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -1792,6 +1924,18 @@
 <xs:complexType name="createAddressResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:address" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPersonDetailsByUserNumber">
+<xs:sequence>
+<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPersonDetailsByUserNumberResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:personDetailsDTO" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1821,6 +1965,18 @@
 <xs:sequence/>
 </xs:complexType>
 
+<xs:complexType name="getPersonDetailsFromSessionId">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPersonDetailsFromSessionIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:personDetailsDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getEstablishmentDTO">
 <xs:sequence>
 <xs:element name="establishmentId" type="xs:long"/>
@@ -1837,18 +1993,6 @@
 <xs:sequence>
 <xs:element name="httpStatusCode" type="xs:int"/>
 <xs:element name="message" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getPersonDetailsFromSessionId">
-<xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getPersonDetailsFromSessionIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:personDetailsDTO" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -1973,29 +2117,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getAgeDisclosureOptions">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getAgeDisclosureOptionsResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getNextOfKinCollection">
-<xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getNextOfKinCollectionResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:nextOfKin" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getDrivingPermit">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -2024,6 +2145,19 @@
 </xs:complexContent>
 </xs:complexType>
 
+<xs:complexType name="getNextOfKinCollection">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="UserNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNextOfKinCollectionResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:nextOfKin" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="restorePerson">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -2049,19 +2183,30 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="selectiveMergePerson">
+<xs:complexType name="getEmergencyContact">
 <xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="MergePerson1" type="xs:string" minOccurs="0"/>
-<xs:element name="MergePerson2" type="xs:string" minOccurs="0"/>
-<xs:element name="NewPerson" type="tns:person" minOccurs="0"/>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="selectiveMergePersonResponse">
+<xs:complexType name="getEmergencyContactResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:person" minOccurs="0"/>
+<xs:element name="return" type="tns:emergencyContact" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="emergencyContact">
+<xs:complexContent>
+<xs:extension base="tns:userOfficeObject">
+<xs:sequence>
+<xs:element name="contactDetails" type="xs:string" minOccurs="0"/>
+<xs:element name="contactId" type="xs:long" minOccurs="0"/>
+<xs:element name="dateAdded" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
 </xs:complexType>
 
 <xs:complexType name="getPersonBySurnameStart">
@@ -2074,6 +2219,21 @@
 <xs:complexType name="getPersonBySurnameStartResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:person" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectiveMergePerson">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="MergePerson1" type="xs:string" minOccurs="0"/>
+<xs:element name="MergePerson2" type="xs:string" minOccurs="0"/>
+<xs:element name="NewPerson" type="tns:person" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="selectiveMergePersonResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:person" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -2268,6 +2428,19 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getFedIdsFromCDR">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getFedIdsFromCDRResponse">
+<xs:sequence>
+<xs:element name="return" type="ns1:stringArray" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getNewAddress">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -2293,19 +2466,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getFedIdsFromCDR">
-<xs:sequence>
-<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getFedIdsFromCDRResponse">
-<xs:sequence>
-<xs:element name="return" type="ns1:stringArray" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="isSessionValid">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -2315,19 +2475,6 @@
 <xs:complexType name="isSessionValidResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getNextOfKinById">
-<xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="NokId" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getNextOfKinByIdResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:nextOfKin" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -2341,6 +2488,19 @@
 <xs:complexType name="noLdapLoginResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNextOfKinById">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="NokId" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNextOfKinByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:nextOfKin" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -2364,6 +2524,18 @@
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestLinkExistingFedId">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="dob" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestLinkExistingFedIdResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getPersonDetails">
@@ -2415,11 +2587,9 @@
 <xs:element name="fedId" type="xs:string" minOccurs="0"/>
 <xs:element name="firstNameKnownAs" type="xs:string" minOccurs="0"/>
 <xs:element name="givenName" type="xs:string" minOccurs="0"/>
-<xs:element name="homePhone" type="xs:string" minOccurs="0"/>
 <xs:element name="honour" type="xs:string" minOccurs="0"/>
 <xs:element name="initials" type="xs:string" minOccurs="0"/>
 <xs:element name="mobilePhone" type="xs:string" minOccurs="0"/>
-<xs:element name="nationality" type="xs:string" minOccurs="0"/>
 <xs:element name="status" type="xs:string" minOccurs="0"/>
 <xs:element name="suffix" type="xs:string" minOccurs="0"/>
 <xs:element name="supervisorUserNumber" type="xs:string" minOccurs="0"/>
@@ -2430,7 +2600,7 @@
 <xs:element name="gender" type="xs:string" minOccurs="0"/>
 <xs:element name="sscNumber" type="xs:string" minOccurs="0"/>
 <xs:element name="visitingDepartment" type="xs:string" minOccurs="0"/>
-<xs:element name="hasNOK" type="xs:boolean" minOccurs="0"/>
+<xs:element name="hasEmergencyContact" type="xs:boolean" minOccurs="0"/>
 <xs:element name="deptAcronym" type="xs:string" minOccurs="0"/>
 <xs:element name="deptName" type="xs:string" minOccurs="0"/>
 <xs:element name="deptUrl" type="xs:string" minOccurs="0"/>
@@ -2462,6 +2632,18 @@
 </xs:complexType>
 
 <xs:complexType name="removeDrivingPermitResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="setEmergencyContact">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+<xs:element name="emergencyContact" type="tns:emergencyContact" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="setEmergencyContactResponse">
 <xs:sequence/>
 </xs:complexType>
 
@@ -2499,6 +2681,18 @@
 <xs:sequence>
 <xs:element name="return" type="tns:personDetailsDTO" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestNewFedId">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="dob" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestNewFedIdResponse">
+<xs:sequence/>
 </xs:complexType>
 
 <xs:complexType name="getLogin">
@@ -2563,19 +2757,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getEstablishment">
-<xs:sequence>
-<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
-<xs:element name="EstId" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getEstablishmentResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:establishment" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getPeople">
 <xs:sequence>
 <xs:element name="SessionId" type="xs:string" minOccurs="0"/>
@@ -2586,6 +2767,19 @@
 <xs:complexType name="getPeopleResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:person" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEstablishment">
+<xs:sequence>
+<xs:element name="SessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="EstId" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEstablishmentResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:establishment" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -2623,19 +2817,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="isAlternativeIdentifierActive">
-<xs:sequence>
-<xs:element name="Uuid" type="xs:string" minOccurs="0"/>
-<xs:element name="Provider" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="isAlternativeIdentifierActiveResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="isAlternativeIdentifierLinked">
 <xs:sequence>
 <xs:element name="Uuid" type="xs:string" minOccurs="0"/>
@@ -2644,6 +2825,19 @@
 </xs:complexType>
 
 <xs:complexType name="isAlternativeIdentifierLinkedResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="isAlternativeIdentifierActive">
+<xs:sequence>
+<xs:element name="Uuid" type="xs:string" minOccurs="0"/>
+<xs:element name="Provider" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="isAlternativeIdentifierActiveResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean" minOccurs="0"/>
 </xs:sequence>
@@ -2802,6 +2996,19 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getEmergencyContactDTO">
+<xs:sequence>
+<xs:element name="sessionId" type="xs:string" minOccurs="0"/>
+<xs:element name="userNumber" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEmergencyContactDTOResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:emergencyContactDTO" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="updatePersonByDTOFromSource">
 <xs:sequence>
 <xs:element name="sessionId" type="xs:string" minOccurs="0"/>
@@ -2813,14 +3020,6 @@
 <xs:complexType name="updatePersonByDTOFromSourceResponse">
 <xs:sequence/>
 </xs:complexType>
-
-<xs:simpleType name="monitorOptIn">
-<xs:restriction base="xs:string">
-<xs:enumeration value="OPT_IN"/>
-<xs:enumeration value="OPT_OUT"/>
-<xs:enumeration value="UNKNOWN"/>
-</xs:restriction>
-</xs:simpleType>
 
 <xs:simpleType name="requestSourceDTO">
 <xs:restriction base="xs:string">
