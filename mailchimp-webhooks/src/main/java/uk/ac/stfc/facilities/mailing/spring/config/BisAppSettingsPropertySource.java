@@ -1,4 +1,4 @@
-package uk.ac.stfc.facilities.mailing.spring.environment.config;
+package uk.ac.stfc.facilities.mailing.spring.config;
 
 import org.springframework.core.env.PropertySource;
 import uk.stfc.bisapps.config.BISAppProperties;

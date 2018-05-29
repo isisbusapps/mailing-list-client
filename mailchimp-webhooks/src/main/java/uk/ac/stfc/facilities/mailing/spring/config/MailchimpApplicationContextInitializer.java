@@ -1,9 +1,8 @@
-package uk.ac.stfc.facilities.mailing.spring;
+package uk.ac.stfc.facilities.mailing.spring.config;
 
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
-import uk.ac.stfc.facilities.mailing.spring.environment.config.BisAppSettingsPropertySource;
 import uk.stfc.bisapps.config.BISAppProperties;
 
 /**
