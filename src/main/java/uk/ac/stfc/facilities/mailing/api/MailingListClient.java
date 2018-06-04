@@ -9,8 +9,8 @@ import java.util.Set;
 /**
  * A client for mailing lists service with the following functionality:
  * <ul>
- * <li>retrieving lists &amp; list members</li>
- * <li>managing members&apos; subscriptions to lists</li>
+ * <li>retrieving lists and list members</li>
+ * <li>managing members’ subscriptions to lists</li>
  * <li>managing list segments &amp; list segment members</li>
  * </ul>
  */

@@ -13,13 +13,12 @@ import java.util.Set;
  * instance of this client per application. The implementation is
  * thread safe.
  * <p>
- *   Creating a mailchimp client, where <code>API_KEY</code> is
- *   the Mailchimp API key:
- *   <pre>
+ * Creating a mailchimp client, where <code>API_KEY</code> is
+ * the Mailchimp API key:
+ * <pre>
  * MailchimpClientConfiguration config = new MailchimpClientConfiguration(API_KEY);
  * MailingListClient client = MailchimpClient.getInstance(configuration);
- *   </pre>
- * </p>
+ * </pre>
  */
 public class MailchimpClient implements MailingListClient {
 
