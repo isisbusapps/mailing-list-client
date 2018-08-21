@@ -60,7 +60,8 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list from which the members is
      *               retrieved
-     * @param email  the email of the member to retrieve
+     * @param email  the email of the member to retrieve, this
+     *               must not be null
      *
      * @return the member of the list with the given email
      *
@@ -81,7 +82,8 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list to which the member will be
      *               subscribed
-     * @param email  the email of the member which will be subscribed
+     * @param email  the email of the member which will be subscribed,
+     *               this must not be null
      *
      * @return the member of the list for which the subscription was
      * requested
@@ -102,7 +104,8 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list from which the member will be
      *               unsubscribed
-     * @param email  the email of the member which will be unsubscribed
+     * @param email  the email of the member which will be unsubscribed,
+     *               this must not be null
      *
      * @return the member of the list for which the unsubscription was
      * requested
@@ -121,7 +124,8 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list to which the member will be
      *               subscribed
-     * @param email  the email of the member which will be subscribed
+     * @param email  the email of the member which will be subscribed,
+     *               this must not be null
      *
      * @return the member of the list for which the subcription was
      * requested
@@ -140,7 +144,8 @@ public interface MailingListClient {
      *
      * @param listId the ID of the list from which the member will
      *               be unsubcribed
-     * @param email  the email of the member which will be unsubscribed
+     * @param email  the email of the member which will be unsubscribed,
+     *               this must not be null
      *
      * @return the member of the list for which the unsubscription was
      * requested

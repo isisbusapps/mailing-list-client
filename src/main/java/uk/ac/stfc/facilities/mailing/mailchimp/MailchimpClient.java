@@ -73,6 +73,9 @@ public class MailchimpClient implements MailingListClient {
 
     @Override
     public MailingListMember subscribeMember(String listId, String email) throws MailingListClientException {
+        if (email == null) {
+            throw new IllegalArgumentException("The email argument must not be null.");
+        }
 
         return httpClient.put("lists/" + listId + "/members/" + convertEmailToId(email),
                 MailchimpListMemberRequest.whichSubscribes(email),
@@ -81,6 +84,9 @@ public class MailchimpClient implements MailingListClient {
 
     @Override
     public MailingListMember unsubscribeMember(String listId, String email) throws MailingListClientException {
+        if (email == null) {
+            throw new IllegalArgumentException("The email argument must not be null.");
+        }
 
         return httpClient.put("lists/" + listId + "/members/" + convertEmailToId(email),
                 MailchimpListMemberRequest.whichUnsubscribes(email),
@@ -89,6 +95,9 @@ public class MailchimpClient implements MailingListClient {
 
     @Override
     public MailingListMember forceSubscribeMember(String listId, String email) throws MailingListClientException {
+        if (email == null) {
+            throw new IllegalArgumentException("The email argument must not be null.");
+        }
 
         return httpClient.put("lists/" + listId + "/members/" + convertEmailToId(email),
                 MailchimpListMemberRequest.whichForceSubscribes(email),
@@ -97,6 +106,9 @@ public class MailchimpClient implements MailingListClient {
 
     @Override
     public MailingListMember forceUnsubscribeMember(String listId, String email) throws MailingListClientException {
+        if (email == null) {
+            throw new IllegalArgumentException("The email argument must not be null.");
+        }
 
         return httpClient.put("lists/" + listId + "/members/" + convertEmailToId(email),
                 MailchimpListMemberRequest.whichForceUnsubscribes(email),
