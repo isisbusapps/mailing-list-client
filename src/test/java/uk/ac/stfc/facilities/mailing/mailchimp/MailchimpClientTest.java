@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Function;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 
@@ -39,25 +41,30 @@ public class MailchimpClientTest {
         @Test
         @DisplayName("when subscribing")
         public void subscribes() {
-            assertThrows(IllegalArgumentException.class, () -> client.subscribeMember(LIST, NULL_EMAIL));
+            assertThrowsCorrectException(() -> client.subscribeMember(LIST, NULL_EMAIL));
         }
 
         @Test
         @DisplayName("when unsubscribing")
         public void unsubscribes() {
-            assertThrows(IllegalArgumentException.class, () -> client.unsubscribeMember(LIST, NULL_EMAIL));
+            assertThrowsCorrectException(() -> client.unsubscribeMember(LIST, NULL_EMAIL));
         }
 
         @Test
         @DisplayName("when force subscribing")
         public void forceSubscribes() {
-            assertThrows(IllegalArgumentException.class, () -> client.forceSubscribeMember(LIST, NULL_EMAIL));
+            assertThrowsCorrectException(() -> client.forceSubscribeMember(LIST, NULL_EMAIL));
         }
 
         @Test
         @DisplayName("when force unsubscribing")
         public void forceUnsubscribes() {
-            assertThrows(IllegalArgumentException.class, () -> client.forceUnsubscribeMember(LIST, NULL_EMAIL));
+            assertThrowsCorrectException(() -> client.forceUnsubscribeMember(LIST, NULL_EMAIL));
+        }
+
+        private void assertThrowsCorrectException(Executable e) {
+            IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, e);
+            assertThat(exception.getMessage()).isEqualTo("The email argument must not be null.");
         }
 
     }
