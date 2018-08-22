@@ -1,5 +1,6 @@
 package uk.ac.stfc.facilities.mailing.mailchimp;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,33 +21,46 @@ import static org.mockito.Mockito.mock;
 @DisplayName("The MailchimpClient should")
 public class MailchimpClientTest {
 
-    private interface MailchimpFunction {
-        Object apply(MailchimpClient client) throws MailingListClientException;
-    }
+    private static final String LIST = "a list";
+    private static final String NULL_EMAIL = null;
 
-    public static Collection<Arguments> generateNullArgumentFunctions() {
-
-        MailchimpFunction subscribe = client -> client.subscribeMember("a list", null);
-        MailchimpFunction unsubscribe = client -> client.unsubscribeMember("a list", null);
-        MailchimpFunction forceSubscribe = client -> client.forceSubscribeMember("a list", null);
-        MailchimpFunction forceUnsubscribe = client -> client.forceUnsubscribeMember("a list", null);
-
-        return Arrays.asList(
-                Arguments.of("subscribe", subscribe),
-                Arguments.of("unsubscribe", unsubscribe),
-                Arguments.of("forceSubscribe", forceSubscribe),
-                Arguments.of("forceUnsubscribe", forceUnsubscribe)
-        );
-    }
-
+    @Nested
     @DisplayName("throw an IllegalArgumentException when email is null")
-    @ParameterizedTest(name = "for {0}")
-    @MethodSource("generateNullArgumentFunctions")
-    public void forSubscriptions(String type, MailchimpFunction function) throws MailingListClientException {
+    public class NullEmailExceptions {
 
-        MailchimpClient client = new MailchimpClient(mock(MailchimpInternalHttpClient.class));
+        private MailchimpClient client;
 
-        assertThrows(IllegalArgumentException.class, () -> function.apply(client));
+        @BeforeEach
+        public void setup() {
+            client = new MailchimpClient(mock(MailchimpInternalHttpClient.class));
+
+        }
+
+        @Test
+        @DisplayName("when subscribing")
+        public void subscribes() {
+            assertThrows(IllegalArgumentException.class, () -> client.subscribeMember(LIST, NULL_EMAIL));
+        }
+
+        @Test
+        @DisplayName("when unsubscribing")
+        public void unsubscribes() {
+            assertThrows(IllegalArgumentException.class, () -> client.unsubscribeMember(LIST, NULL_EMAIL));
+        }
+
+        @Test
+        @DisplayName("when force subscribing")
+        public void forceSubscribes() {
+            assertThrows(IllegalArgumentException.class, () -> client.forceSubscribeMember(LIST, NULL_EMAIL));
+        }
+
+        @Test
+        @DisplayName("when force unsubscribing")
+        public void forceUnsubscribes() {
+            assertThrows(IllegalArgumentException.class, () -> client.forceUnsubscribeMember(LIST, NULL_EMAIL));
+        }
+
     }
+
 
 }
