@@ -39,7 +39,7 @@ public class MailchimpClient implements MailingListClient {
 
     private final MailchimpInternalHttpClient httpClient;
 
-    private MailchimpClient(MailchimpInternalHttpClient internalHttpClient) {
+    MailchimpClient(MailchimpInternalHttpClient internalHttpClient) {
         this.httpClient = internalHttpClient;
     }
 
