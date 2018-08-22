@@ -35,7 +35,6 @@ public class MailchimpClientTest {
         @BeforeEach
         public void setup() {
             client = new MailchimpClient(mock(MailchimpInternalHttpClient.class));
-
         }
 
         @Test
@@ -68,6 +67,5 @@ public class MailchimpClientTest {
         }
 
     }
-
 
 }
