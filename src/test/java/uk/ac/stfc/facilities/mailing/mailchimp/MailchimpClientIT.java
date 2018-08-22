@@ -16,7 +16,6 @@ import java.util.Random;
 import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("The Mailchimp client")
-@Tag("integration")
 public class MailchimpClientIT {
 
     private static final String NAME_FIELD_NAME = "name";
