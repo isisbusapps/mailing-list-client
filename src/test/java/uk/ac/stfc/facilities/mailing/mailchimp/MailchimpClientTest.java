@@ -32,17 +32,17 @@ public class MailchimpClientTest {
         MailchimpFunction forceUnsubscribe = client -> client.forceUnsubscribeMember("a list", null);
 
         return Arrays.asList(
-                Arguments.of(subscribe),
-                Arguments.of(unsubscribe),
-                Arguments.of(forceSubscribe),
-                Arguments.of(forceUnsubscribe)
+                Arguments.of("subscribe", subscribe),
+                Arguments.of("unsubscribe", unsubscribe),
+                Arguments.of("forceSubscribe", forceSubscribe),
+                Arguments.of("forceUnsubscribe", forceUnsubscribe)
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("generateNullArgumentFunctions")
     @DisplayName("throw an IllegalArgumentException when email is null")
-    public void forSubscriptions(MailchimpFunction function) throws MailingListClientException {
+    @ParameterizedTest(name = "for {0}")
+    @MethodSource("generateNullArgumentFunctions")
+    public void forSubscriptions(String type, MailchimpFunction function) throws MailingListClientException {
 
         MailchimpClient client = new MailchimpClient(mock(MailchimpInternalHttpClient.class));
 
