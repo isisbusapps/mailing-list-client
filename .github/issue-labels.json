@@ -1,0 +1,292 @@
+[
+  {
+    "name": "area",
+    "type": "issue",
+    "description": "The area of the software that the issue is related. This is repo or team specific.",
+    "visual-priorities": {
+      "high": "#62d6b2",
+      "medium": "#ace5d0",
+      "low": "#e2f5ed"
+    }
+  },
+  {
+    "name": "do-not-merge",
+    "type": "pr",
+    "description": "Marks that the PR should not be merged with the given reason.",
+    "visual-priorities": {
+      "high": "#d0b6fa",
+      "medium": "#e1d3fa",
+      "low": "#f3eefd"
+    },
+    "labels": {
+      "blocked": {
+        "description": "This PR cannot be merged because it is blocked by something else.",
+        "visual-priority": "high"
+      },
+      "in-progress": {
+        "description": "This PR cannot be merged because further work needs to be completed on it.",
+        "visual-priority": "high"
+      }
+    }
+  },
+  {
+    "name": "ops",
+    "type": "pr",
+    "description": "The ops required for the PR on merge or release. The PR will contain additional information.",
+    "visual-priorities": {
+      "high": "#92c7f7",
+      "medium": "#c1dcf9",
+      "low": "#e9f2fc"
+    },
+    "labels": {
+      "ci": {
+        "description": "This PR requires changes to the continuous integration configuration.",
+        "visual-priority": "medium"
+      },
+      "bis-app-settings": {
+        "description": "This PR requires a bis-app-settings change on release.",
+        "visual-priority": "medium"
+      },
+      "db": {
+        "description": "This PR requires a database change on release.",
+        "visual-priority": "medium"
+      },
+      "wsdl": {
+        "description": "This PR changes the application's WSDLs and therefore requires an update to users of the WSDLs.",
+        "visual-priority": "medium"
+      },
+      "comms": {
+        "description": "This issue needs comms during the release.",
+        "visual-priority": "medium"
+      },
+      "manual": {
+        "description": "This PR requires manual ops on release",
+        "visual-priority": "high"
+      },
+      "requires-monitoring": {
+        "description": "This PR requires monitoring on merge or release",
+        "visual-priority": "high"
+      }
+    }
+  },
+  {
+    "name": "priority",
+    "type": "issue",
+    "description": "The priority of the issue. In absence an issue is considered \"normal\" priority.",
+    "visual-priorities": {
+      "high": "#9bd089",
+      "medium": "#c3e2ba",
+      "low": "#e9f4e6"
+    },
+    "labels": {
+      "low": {
+        "description": "The issue is low and does not need to be worked on soon.",
+        "visual-priority": "low"
+      },
+      "urgent": {
+        "description": "The issue is urgent and should be worked on as a priority.",
+        "visual-priority": "high"
+      }
+    }
+  },
+  {
+    "name": "review",
+    "type": ["issue", "pr"],
+    "description": "Requests a review on the issue or PR.",
+    "visual-priorities": {
+      "high": "#f6aae4",
+      "medium": "#f8cced",
+      "low": "#fcecf8"
+    },
+    "labels": {
+      "please": {
+        "description": "A request for an ad-hoc review.",
+        "visual-priority": "medium"
+      },
+      "design": {
+        "description": "A request for a review in the weekly code review slot.",
+        "visual-priority": "medium"
+      },
+      "code": {
+        "description": "A request for a review in the weekly design review slot.",
+        "visual-priority": "medium"
+      }
+    }
+  },
+  {
+    "name": "size",
+    "type": "issue",
+    "description": "The size of the work required to complete the issue. This is repo or team specific.",
+    "visual-priorities": {
+      "high": "#55d3dc",
+      "medium": "#aae3e8",
+      "low": "#e2f4f6"
+    },
+    "labels": {
+      "coffee": {
+        "description": "The issue can be done in the time it takes to make a coffee.",
+        "visual-priority": "low"
+      },
+      "l": {
+        "description": "The issue looks like a sprints worth of work.",
+        "visual-priority": "medium"
+      },
+      "m": {
+        "description": "The issue looks like a half a sprints worth of work.",
+        "visual-priority": "medium"
+      },
+      "s": {
+        "description": "The issue looks like a few days work.",
+        "visual-priority": "medium"
+      },
+      "xl": {
+        "description": "The issue looks like a sprints worth of work.",
+        "visual-priority": "high"
+      },
+      "xs": {
+        "description": "The issue looks like a few hours work.",
+        "visual-priority": "medium"
+      }
+    }
+  },
+  {
+    "name": "status",
+    "type": "issue",
+    "description": "The status of the work in relation to the issue.",
+    "visual-priorities": {
+      "high": "#efb68f",
+      "medium": "#f6d2be",
+      "low": "#fceee7"
+    },
+    "labels": {
+      "new": {
+        "description": "The issue is new and is waiting to be checked.",
+        "visual-priority": "high"
+      },
+      "clarify": {
+        "description": "The issue needs clarification before work.",
+        "visual-priority": "medium"
+      },
+      "waiting-for-response": {
+        "description": "The issue is waiting for response for clarification.",
+        "visual-priority": "medium"
+      },
+      "ready": {
+        "description": "The issue is ready for work to be started on.",
+        "visual-priority": "medium"
+      },
+      "up-next": {
+        "description": "The issue should be the next one that should have work started.",
+        "visual-priority": "medium"
+      },
+      "in-progress": {
+        "description": "The issue has work that is now in progress.",
+        "visual-priority": "medium"
+      },
+      "blocked": {
+        "description": "The issue cannot be worked on as it is blocked.",
+        "visual-priority": "medium"
+      },
+      "in-sprint-addition": {
+        "description": "The issue was added to a sprint after the sprint had started.",
+        "visual-priority": "high"
+      }
+    }
+  },
+  {
+    "name": "triage",
+    "type": "issue",
+    "description": "The closure reason for the issues.",
+    "visual-priorities": {
+      "high": "#cdc478",
+      "medium": "#e0dab2",
+      "low": "#f3f1e4"
+    },
+    "labels": {
+      "duplicate": {
+        "description": "The issue was closed because it's a duplicate of another issue.",
+        "visual-priority": "low"
+      },
+      "non-reproducible": {
+        "description": "The issue was investigated could not be reproduced.",
+        "visual-priority": "low"
+      },
+      "not-required": {
+        "description": "The issue was closed as it is no longer required",
+        "visual-priority": "low"
+      },
+      "unresolved": {
+        "description": "The issue exists but could not or should not be resolved.",
+        "visual-priority": "medium"
+      }
+    }
+  },
+  {
+    "name": "type",
+    "type": "issue",
+    "description": "The type of work for the issue.",
+    "visual-priorities": {
+      "high": "#ffabbb",
+      "medium": "#ffccd5",
+      "low": "#ffecef"
+    },
+    "labels": {
+      "accessibility": {
+        "description": "The issue describes a problem specific to user accessibility.",
+        "visual-priority": "high"
+      },
+      "api-change": {
+        "description": "The issue describes a change to an API.",
+        "visual-priority": "medium"
+      },
+      "bug": {
+        "description": "The issue describes a bug report.",
+        "visual-priority": "medium"
+      },
+      "dev-only": {
+        "description": "The issue describes a problem that only occurs in the dev environment",
+        "visual-priority": "low"
+      },
+      "enhancement": {
+        "description": "The issue describes an enhancement that can be made to a feature.",
+        "visual-priority": "medium"
+      },
+      "feature": {
+        "description": "The issue describes a new feature or a change to a feature.",
+        "visual-priority": "medium"
+      },
+      "friendly": {
+        "description": "The issue describes a change that might be good for a new person to the repo.",
+        "visual-priority": "low"
+      },
+      "gdpr": {
+        "description": "The issue describes a GDPR related problem in the application.",
+        "visual-priority": "high"
+      },
+      "security": {
+        "description": "The issue describes a security flaw in the application.",
+        "visual-priority": "high"
+      },
+      "performance": {
+        "description": "The issue describes a performance issues.",
+        "visual-priority": "medium"
+      },
+      "refactor": {
+        "description": "The issue describes an internal change in our applications to improve developer experience.",
+        "visual-priority": "medium"
+      },
+      "story": {
+        "description": "The issue describes a story which might cover multiple features.",
+        "visual-priority": "medium"
+      },
+      "test": {
+        "description": "The issue describes tests that need to be added or improved.",
+        "visual-priority": "medium"
+      },
+      "ux": {
+        "description": "The issue describes a problem with user experience.",
+        "visual-priority": "medium"
+      }
+    }
+  }
+]
