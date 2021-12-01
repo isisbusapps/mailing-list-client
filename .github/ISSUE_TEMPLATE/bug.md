@@ -7,22 +7,15 @@ assignees: ''
 
 ---
 
-<!---
-  For a bug, if possible, the following information should be included:
-    - A short description of the issue and what it affects.
-    - How to replicate it or related screenshots (without personal user data).
-    - Which users it affects.
-    - Who reported the issue/how it was reported (e.g. through the inbox).
--->
+**What is the problem?**
 
-<!---
-  Make sure the issue is labelled correctly (see https://github.com/isisbusapps/ISISBusApps/wiki/Labels):
-    - Choose the correct area(s)
-    - Choose the correct type(s)
-    - Choose the correct status
---> 
+**Where is the problem?**
 
-<!---
-  Does this affect the users? If so, it needs to be communicated with the major stakeholders 
-  through the Product Owner.
--->
+**Who does the problem affect?**
+
+**How do you recreate the problem?**
+
+**What is the desired behaviour?**
+
+**Screenshot (if applicable):**
+
