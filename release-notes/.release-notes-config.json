@@ -1,0 +1,37 @@
+{
+  "types": [
+    {
+      "name": "Fixed",
+      "labels": [
+        "type: bug",
+        "type: accessibility",
+        "type: performance",
+        "type: security",
+        "type: gdpr"
+      ]
+    },
+    {
+      "name": "Changed",
+      "labels": [
+        "type: enhancement",
+        "type: refactor",
+        "type: api-change",
+        "type: test"
+      ]
+    },
+    {
+      "name": "Added",
+      "labels": [
+        "type: feature"
+      ]
+    }
+  ],
+  "attentionLabels": [
+    "ops: bis-app-settings",
+    "ops: ci",
+    "ops: comms",
+    "ops: db",
+    "ops: wsdl",
+    "ops: requires-monitoring"
+  ]
+}
