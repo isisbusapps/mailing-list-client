@@ -105,7 +105,7 @@
         <tag>HEAD</tag>
     </scm>
 
-        <distributionManagement>
+    <distributionManagement>
         <repository>
             <id>gitea</id>
             <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
@@ -114,6 +114,6 @@
             <id>gitea</id>
             <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
         </snapshotRepository>
-        </distributionManagement>
+    </distributionManagement>
 
 </project>
