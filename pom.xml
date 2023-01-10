@@ -105,15 +105,15 @@
         <tag>HEAD</tag>
     </scm>
 
-    <distributionManagement>
+        <distributionManagement>
         <repository>
-            <id>repository.internal</id>
-            <url>http://fitbawebrepo/artifactory/libs-release-local/</url>
+            <id>gitea</id>
+            <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
         </repository>
         <snapshotRepository>
-            <id>repository.snapshots</id>
-            <url>http://fitbawebrepo/artifactory/libs-snapshot-local/</url>
+            <id>gitea</id>
+            <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
         </snapshotRepository>
-    </distributionManagement>
+        </distributionManagement>
 
 </project>
