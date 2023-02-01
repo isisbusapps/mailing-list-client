@@ -24,7 +24,7 @@ public class MailchimpClientConfiguration {
     public MailchimpClientConfiguration(String apiKey) {
         this.apiKey = apiKey;
         this.host = MAILCHIMP_API_BASE_HOST;
-        this.baseUri = SCHEME + "://" + MAILCHIMP_API_VERSION_URI;
+        this.baseUri = SCHEME + "://" + MAILCHIMP_API_BASE_HOST;
     }
 
     public String getApiKey() {
