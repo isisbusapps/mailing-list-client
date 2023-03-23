@@ -16,6 +16,7 @@ public class MailchimpClientConfiguration {
      * contains all of the connection information for Mailchimp.
      *
      * @param apiKey the API key for Mailchimp.
+     * @param host the Mailchimp Host link.
      */
     public MailchimpClientConfiguration(String apiKey,String host) {
         this.apiKey = apiKey;
