@@ -6,7 +6,6 @@ package uk.ac.stfc.facilities.mailing.mailchimp;
 public class MailchimpClientConfiguration {
     private static final String SCHEME = "https";
     private static final int PORT = 443;
-    private static final String MAILCHIMP_API_BASE_HOST = "proxy-api.facilities.rl.ac.uk/mailchimp";
     private static final String MAILCHIMP_API_VERSION_URI = "/3.0/";
     private static final String API_KEY_SPLITTER = "-";
 
@@ -21,10 +20,10 @@ public class MailchimpClientConfiguration {
      *
      * @param apiKey the API key for Mailchimp.
      */
-    public MailchimpClientConfiguration(String apiKey) {
+    public MailchimpClientConfiguration(String apiKey,String host) {
         this.apiKey = apiKey;
-        this.host = MAILCHIMP_API_BASE_HOST;
-        this.baseUri = SCHEME + "://" + MAILCHIMP_API_BASE_HOST;
+        this.host = host;
+        this.baseUri = SCHEME + "://" + this.host + MAILCHIMP_API_VERSION_URI;
     }
 
     public String getApiKey() {
