@@ -7,10 +7,7 @@ public class MailchimpClientConfiguration {
     private static final String SCHEME = "https";
     private static final int PORT = 443;
     private static final String MAILCHIMP_API_VERSION_URI = "/3.0/";
-    private static final String API_KEY_SPLITTER = "-";
-
     private final String apiKey;
-
     private final String baseUri;
     private final String host;
 
