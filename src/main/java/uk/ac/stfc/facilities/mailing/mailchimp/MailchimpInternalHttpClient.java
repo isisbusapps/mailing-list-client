@@ -62,7 +62,7 @@ class MailchimpInternalHttpClient {
         provider.setCredentials(AuthScope.ANY, credentials);
 
         AuthCache authCache = new BasicAuthCache();
-        authCache.put(new HttpHost( HttpHost.create(configuration.getBaseUrl())), new BasicScheme());
+        authCache.put(HttpHost.create(configuration.getBaseUrl()), new BasicScheme());
 
         HttpClientContext context = HttpClientContext.create();
 
