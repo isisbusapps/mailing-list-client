@@ -1,0 +1,73 @@
+pipeline {
+  agent {
+    label 'java'
+  }
+
+  tools {
+    maven 'Maven 3.3.9'
+    jdk 'jdk8'
+  }
+
+  triggers {
+    pollSCM('H/5 7-20 * * 1-5')
+  }
+
+  options {
+    disableConcurrentBuilds()
+
+    buildDiscarder(
+      logRotator(
+        numToKeepStr: '20',
+        daysToKeepStr: '30'
+      )
+    )
+
+    office365ConnectorWebhooks([[
+      url: "${env.TEAMS_WEBHOOK_URL}",
+      notifyUnstable: true,
+      notifyFailure: true,
+      notifyBackToNormal: true,
+      startNotification: false,
+      notifySuccess: false,
+      notifyAborted: false,
+      notifyNotBuilt: false,
+      notifyRepeatedFailure: false
+    ]])
+  }
+
+  stages {
+    stage('Build mailing List client') {
+      steps {
+        bat 'mvn -B -f pom.xml clean install findbugs:findbugs -Dfindbugs.excludeFilterFile=c:/javalib/findbugs-2.0.2/global-excludes.xml checkstyle:checkstyle -Dcheckstyle.config.location=c:/javalib/checkstyle-5.6/bus-apps.xml pmd:cpd -DminimumTokens=25'
+      }
+
+      post {
+        always {
+          junit '**/target/surefire-reports/TEST-*.xml'
+        }
+
+        success {
+          recordIssues enabledForFailure: true, tools: [findBugs(), pmdParser(), taskScanner(highTags: 'FIXME', normalTags: 'TODO', lowTags: 'HACK', includePattern: '**/*.java')]
+        }
+
+        regression {
+          emailext (
+            subject: '$DEFAULT_SUBJECT',
+            body: '$DEFAULT_CONTENT',
+            to: '$DEFAULT_RECIPIENTS',
+            recipientProviders: [developers()]
+          )
+        }
+
+        fixed {
+          emailext (
+            subject: '$DEFAULT_SUBJECT',
+            body: '$DEFAULT_CONTENT',
+            to: '$DEFAULT_RECIPIENTS',
+            recipientProviders: [developers()]
+          )
+        }
+      }
+    }
+  }
+}
