@@ -1,0 +1,107 @@
+pipeline {
+  agent {
+    label 'java'
+  }
+
+  tools {
+    maven 'Maven 3.3.9'
+    jdk 'jdk8'
+  }
+
+  triggers {
+    pollSCM('H/5 7-20 * * 1-5')
+  }
+
+  options {
+    disableConcurrentBuilds()
+
+    buildDiscarder(
+      logRotator(
+        numToKeepStr: '20',
+        daysToKeepStr: '30'
+      )
+    )
+
+    office365ConnectorWebhooks([[
+      url: "${env.TEAMS_WEBHOOK_URL}",
+      notifyUnstable: true,
+      notifyFailure: true,
+      notifyBackToNormal: true,
+      startNotification: false,
+      notifySuccess: false,
+      notifyAborted: false,
+      notifyNotBuilt: false,
+      notifyRepeatedFailure: false
+    ]])
+  }
+
+  parameters {
+    string(name: 'RELEASE_VERSION', defaultValue: '', description: 'The version number for this build. Setting this indicates a release build.')
+    booleanParam(name: 'DRY_RUN', defaultValue: true, description: 'On runs where version number is provided, run the build without pushing binaries to gitea or new version numbers to github')
+  }
+
+  stages {
+    stage('Build') {
+      stages {
+        stage('Default build') {
+          when {
+            expression { params.RELEASE_VERSION == '' }
+          }
+          // Verify that the code builds
+          steps {
+            bat 'mvn -B -f pom.xml clean install findbugs:findbugs -Dfindbugs.excludeFilterFile=c:/javalib/findbugs-2.0.2/global-excludes.xml checkstyle:checkstyle -Dcheckstyle.config.location=c:/javalib/checkstyle-5.6/bus-apps.xml pmd:cpd -DminimumTokens=25'
+          }
+        }
+
+        stage('Dry run release build') {
+          when {
+            expression { params.RELEASE_VERSION != '' && params.DRY_RUN == true }
+          }
+          // Build and deploy the snapshot to the maven repository specified in the pom file
+          steps {
+            bat "mvn -B -f pom.xml -DreleaseVersion=${params.RELEASE_VERSION} -Dresume=false -DdryRun=true release:prepare"
+          }
+        }
+
+        stage('Release build') {
+          when {
+            expression { params.RELEASE_VERSION != '' && params.DRY_RUN == false }
+          }
+          // Run code analysis on the latest pushes to the master branch
+          steps {
+            bat "mvn -B -f pom.xml -DreleaseVersion=${params.RELEASE_VERSION} -Dresume=false release:prepare release:perform"
+            script { currentBuild.setKeepLog(true) }
+          }
+        }
+      }
+
+      post {
+        always {
+          junit '**/target/surefire-reports/TEST-*.xml'
+        }
+
+        success {
+          recordIssues enabledForFailure: true, tools: [findBugs(), pmdParser(), taskScanner(highTags: 'FIXME', normalTags: 'TODO', lowTags: 'HACK', includePattern: '**/*.java')]
+        }
+
+        regression {
+          emailext (
+            subject: '$DEFAULT_SUBJECT',
+            body: '$DEFAULT_CONTENT',
+            to: '$DEFAULT_RECIPIENTS',
+            recipientProviders: [developers()]
+          )
+        }
+
+        fixed {
+          emailext (
+            subject: '$DEFAULT_SUBJECT',
+            body: '$DEFAULT_CONTENT',
+            to: '$DEFAULT_RECIPIENTS',
+            recipientProviders: [developers()]
+          )
+        }
+      }
+    }
+  }
+}
