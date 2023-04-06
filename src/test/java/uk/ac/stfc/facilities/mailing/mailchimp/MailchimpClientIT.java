@@ -67,8 +67,9 @@ public class MailchimpClientIT {
         properties.load(new FileInputStream(file));
 
         String mailchimpApiKey =  loadProperty(properties, "mailchimp.api.key");
+        String mailchimpHost =  loadProperty(properties, "mailchimp.test.host");
 
-        mailchimpClient = MailchimpClient.getInstance(new MailchimpClientConfiguration(mailchimpApiKey));
+        mailchimpClient = MailchimpClient.getInstance(new MailchimpClientConfiguration(mailchimpApiKey,mailchimpHost));
 
         listId = loadProperty(properties, "mailchimp.list.id");
 

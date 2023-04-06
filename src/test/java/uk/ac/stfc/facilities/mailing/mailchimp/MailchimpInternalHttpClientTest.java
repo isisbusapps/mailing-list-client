@@ -69,7 +69,7 @@ public class MailchimpInternalHttpClientTest {
 
     // dash is required in the api key
     private static final MailchimpClientConfiguration EXAMPLE_CONFIGURATION =
-            new MailchimpClientConfiguration("abcd-ab1");
+            new MailchimpClientConfiguration("abcd-ab1","devproxy-api.facilities.rl.ac.uk/mailchimp/3.0/");
 
     private static final IOException EXPECTED_IO_EXCEPTION_CAUSE = new IOException("test");
     private static final String TEST_DTO_JSON = "{\"value\":\"hello world\"}";
