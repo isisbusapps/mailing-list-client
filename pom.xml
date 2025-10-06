@@ -108,11 +108,11 @@
     <distributionManagement>
         <repository>
             <id>gitea</id>
-            <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
+            <url>https://git.developers.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
         </repository>
         <snapshotRepository>
             <id>gitea</id>
-            <url>https://git.devs.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
+            <url>https://git.developers.facilities.rl.ac.uk/api/packages/isisbusapps/maven</url>
         </snapshotRepository>
     </distributionManagement>
 
