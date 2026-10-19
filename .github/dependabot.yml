@@ -6,7 +6,7 @@ version: 2
 updates:
   # Enable version updates for npm
   - package-ecosystem: "maven"
-    directory: "/mailing-list-client/"
+    directory: "/"
     schedule:
       interval: "daily"
     cooldown:
